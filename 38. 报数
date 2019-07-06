@@ -1,0 +1,21 @@
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        
+        lstr = '1'
+        for i in range(n-1):
+            s = lstr #既要用它，又要改变它，可以先复制保存，再修改
+            
+            #初始化
+            lstr = ''  
+            a = s[0]
+            count = 0
+            
+            for item in list(s):
+                if item == a:
+                    count +=1
+                else:
+                    lstr = lstr + str(count) + str(a)
+                    a = item
+                    count = 1
+            lstr = lstr + str(count) + str(a)
+        return lstr
