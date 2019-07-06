@@ -1,0 +1,15 @@
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        mcost = cost + [0]
+        n = len(mcost)
+        if n == 1 or n == 2:
+            return 0
+        
+        #初始化
+        fl = [0 for i in mcost]
+        fl[0] = 0 # mcost[0] #不会出现只有一个的情况，之前已经排除了，所以fl[0]不能初始化为0
+        fl[1] = 0 # mcost[1] if mcost[1] < mcost[0] else mcost[0]
+        
+        for i in range(2,n):
+            fl[i] = fl[i-2] + mcost[i-2] if fl[i-2] + mcost[i-2] < fl[i-1]+ mcost[i-1] else fl[i-1]+ mcost[i-1]
+        return fl[-1]
