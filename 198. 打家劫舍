@@ -1,0 +1,16 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 0:
+            return 0
+        if n ==1:
+            return nums[0]
+        
+        fl = [0 for i in nums]
+        fl[0] = nums[0]
+        fl[1] = nums[1] if nums[1]>nums[0] else nums[0]
+        
+        for i in range(2,n):
+            #重点在于状态转移方程的寻找，先考虑最后一步的情况，只有两种，偷和不偷，计算得失，选收益大的，然后往前递推，确定初始条件和边界情况
+            fl[i] = fl[i-2]+nums[i] if fl[i-2]+nums[i]>fl[i-1] else fl[i-1] 
+        return fl[-1]
