@@ -1,0 +1,20 @@
+class Solution:
+    def removeOuterParentheses(self, S: str) -> str:
+        
+        slist = list(S)
+        
+        #计数
+        nsum = 0
+        alls = '' #汇总返回字符串
+        items = '' #每次迭代结果收集
+        for i in slist:
+            items = items + i
+            if i == '(':
+                nsum +=1  #因为左右括号是配对的，所以可以用加减来处理
+            elif i ==')':
+                nsum -=1
+            if nsum == 0:
+                alls = alls+items[1:-1]
+                items = ''
+        return alls
+                
