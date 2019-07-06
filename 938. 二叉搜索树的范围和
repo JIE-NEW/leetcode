@@ -1,0 +1,22 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def rangeSumBST(self, root: TreeNode, L: int, R: int) -> int:
+        
+        #递归求解
+        def rf(rnode,lk,rk):
+            if rnode == None:
+                return 0
+            if lk <= rnode.val <= rk:
+                return rnode.val + rf(rnode.left,lk,rk) + rf(rnode.right,lk,rk)
+            elif rk < rnode.val:
+                return rf(rnode.left,lk,rk)
+            else:
+                return rf(rnode.right,lk,rk)
+        return rf(root,L,R)
+                
