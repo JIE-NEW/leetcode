@@ -1,0 +1,20 @@
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        if m ==0 or n==0:
+            return 0
+        if m == 1 or n ==1:
+            return 1
+        
+        #构建数组及初始化
+        flist = [[0 for j in range(n+1)] for i in range(m+1)]
+        for i in range(m+1):
+            flist[i][1] = 1 
+        for j in range(n+1):
+            flist[1][j] = 1
+        
+        
+        for i in range(2,m+1):
+            for j in range(2,n+1):
+                flist[i][j] = flist[i-1][j] + flist[i][j-1] #状态转换方程
+        return flist[m][n]
+                
