@@ -1,0 +1,20 @@
+class Solution:
+    def repeatedNTimes(self, A: List[int]) -> int:
+        import random
+        while(1):
+            a = random.randint(0,len(A)-1)#可以取到右边界
+            b = random.randint(0,len(A)-1)
+            if a != b and A[a] == A[b]:
+                return A[a]
+'''
+在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。
+返回重复了 N 次的那个元素。
+
+其实只要选取两个数，相等就直接返回结果就可以，
+遍历的话遇到特殊情况效率会比较差，
+随机选择，然后看是否相等，从概率来看效果还是可以的
+算法导论里面为了避免比较差的结果出现，常加一步随机选择，
+在这里用上了
+开心
+
+'''
