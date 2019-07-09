@@ -1,0 +1,20 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def searchBST(self, root: TreeNode, val: int) -> TreeNode:
+        if root is None:
+            return None
+        elif root.val == val:
+            return root
+        else:
+            
+            a = self.searchBST(root.left,val) #此处的返回值问题，要返回值的时候最后返回正常
+            b = self.searchBST(root.right,val)
+        return a if a is not None else b
+            #self.searchBST(root.left,val) #此处的返回值问题，不要返回值，在目标节点为最后一个节点时，返回空
+            #self.searchBST(root.right,val)
