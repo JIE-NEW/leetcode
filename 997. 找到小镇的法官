@@ -1,0 +1,13 @@
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        if N == 1:
+            return 1
+        sendTrust = set()
+        getTrust = set()
+        sumTrust = [0 for i in range(N+1)]
+        for item in trust:
+            sendTrust.add(item[0])
+            getTrust.add(item[1])
+            sumTrust[item[1]] = sumTrust[item[1]]+1
+        result = list(getTrust - sendTrust)
+        return result[0] if (len(result) ==1 and len(sendTrust)==N-1 and sumTrust[result[0]] == N-1) else -1 
