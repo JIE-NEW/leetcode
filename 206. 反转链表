@@ -1,0 +1,27 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        pre, curr = None, head
+        while curr:
+            curr.next, pre, curr = pre,curr,curr.next 
+        return pre
+#         #排除长度为零和1 的链表
+#         if head and head.next:#长度为零的链表是没有next 属性的
+#             act = head #保存当前节到act
+#             head = head.next #head移动到下一个节点
+#             b = head.next#获得head的下一个节点，方便head移动，铺路，找跳板
+#             head.next = act #修改head节点的指向
+#             act.next = None #修改之前保存的act 节点的指向
+#             while(b):#判断跳板是否存在
+#                 act = head #保存当前节点
+#                 head = b #当前节点往下移动，跳跳板
+#                 b = head.next #铺路，搭跳板
+#                 head.next = act #head 指向
+#         return head
+            
+        
