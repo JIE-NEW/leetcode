@@ -14,4 +14,4 @@ class Solution:
             pre = a
         return self.next
 #按照课程示例来写的，思路很清晰，但是在leetcode中时间和空间都不是很好
-#还要再改进一下
+#还要再改进一下，我看很多人是用递归写的
